@@ -20,7 +20,7 @@ def countbases(sequence):
     Tcount=sequence.count("T")
     return(Acount, Ccount, Gcount, Tcount)
 if __name__ == "__main__":
-    filename = "rosalind_dna.txt"
+    filename = "data/rosalind_dna.txt"
     with open(filename, 'r') as file:
         filecontents = file.read()
     Acount, Ccount, Gcount, Tcount = countbases(filecontents)
