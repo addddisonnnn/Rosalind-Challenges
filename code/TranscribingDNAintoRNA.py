@@ -1,6 +1,6 @@
 """
 Title: Transcribing DNA into RNA
-Link:
+Link: https://rosalind.info/problems/rna/
 
 Problem:
 An RNA string is a string formed from the alphabet containing 'A', 'C', 'G', and 'U'.
