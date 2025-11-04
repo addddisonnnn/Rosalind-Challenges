@@ -32,22 +32,58 @@ A: 5 1 0 0 5 5 0 0
 C: 0 0 1 4 2 0 6 1
 G: 1 1 6 3 0 1 0 0
 T: 1 5 0 0 0 1 1 6
-
 """
-import random
 if __name__ == "__main__":
     filename = "data/rosalind_cons.txt"
     sequences = []
+    current_sequence = []
+
     with open(filename, 'r') as file:
         for line in file:
             line = line.strip()
-            if !line.startswith('>'):
-                sequences.append(line)
+            if not line:  # Skip empty lines
+                continue
+            if line.startswith('>'):
+                if current_sequence:  # Save the previous sequence if one exists
+                    sequences.append("".join(current_sequence))
+                current_sequence = []  # Start a new sequence
+            else:
+                current_sequence.append(line)
+        if current_sequence:  # Save the last sequence
+            sequences.append("".join(current_sequence))
+    sequencelength = len(sequences[0]) #save for efficency
     
-    coord = [] #list that will be returned
-    for i in range(len(s)-len(t)):  #loop through the length of s, minus the length of t since we're creating subsets
-        subset=s[i: i+len(t)] #creates subsets within the s string
-        if subset==t: #if that subset is equal to t, record its position
-            coord.append(i+1)
-
-    print(*coord)
+    #initialize a matrix of size four (four bases) by length of sequence
+    #The order of bases is A, C, G, T
+    CountPerBase = [[0] * sequencelength for _ in range(4)]
+    
+    for sequence in sequences: #iterate through each sequence
+        for i in range(sequencelength): #iterate through each base of the sequence
+            if sequence[i] == "A": #for each base that is seen, increase the count
+                CountPerBase[0][i]+=1
+            elif sequence[i] == "C":
+                CountPerBase[1][i]+=1
+            elif sequence[i] == "G":
+                CountPerBase[2][i]+=1
+            else:
+                CountPerBase[3][i]+=1
+    
+    consensus = "" #forming the consensus sequence
+    for i in range(sequencelength): #iterate through the length of a sequence
+        currentbase = "A" #keep track of what base has the highest count
+        currentbasecount = CountPerBase[0][i] #keep track of the base's count
+        if currentbasecount <= CountPerBase[1][i]:
+            currentbase = "C"
+            currentbasecount = CountPerBase[1][i]
+        if currentbasecount <= CountPerBase[2][i]:
+            currentbase = "G"
+            currentbasecount = CountPerBase[2][i]
+        if currentbasecount <= CountPerBase[3][i]:
+            currentbase = "T"
+            currentbasecount = CountPerBase[3][i]
+        consensus += currentbase #the base with the highest count will be added to the consensus
+    print(consensus)
+    print("A:", *CountPerBase[0])
+    print("C:", *CountPerBase[1])
+    print("G:", *CountPerBase[2])
+    print("T:", *CountPerBase[3])

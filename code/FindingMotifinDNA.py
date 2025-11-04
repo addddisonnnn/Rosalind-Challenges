@@ -25,7 +25,6 @@ Sample Output:
 2 4 10
 
 """
-import random
 if __name__ == "__main__":
     filename = "data/rosalind_subs.txt"
     with open(filename, 'r') as file:

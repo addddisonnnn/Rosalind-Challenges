@@ -19,7 +19,6 @@ AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA
 Sample Output:
 MAMAPRTEINSTRING
 """
-import random
 if __name__ == "__main__":
     filename = "data/rosalind_prot.txt"
     with open(filename, 'r') as file:

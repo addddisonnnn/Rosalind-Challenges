@@ -37,7 +37,6 @@ P(dominant)=    P(X=DD) +
                 P(X=Dd , Y=DD) + P(X=Dd , Y=Dd)*75% + P(X=Dd , Y=dd)*50% + 
                 P(X=dd , Y=dd)*0% + P(X=dd , Y=Dd)*75% + P(X=dd , Y=DD)*100%
 """
-import random
 if __name__ == "__main__":
     filename = "data/rosalind_iprb.txt"
     with open(filename, 'r') as f:
