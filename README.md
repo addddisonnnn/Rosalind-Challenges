@@ -2,3 +2,13 @@
 Documenting my process toward establishing my background in programming in bioinformatics through Rosalind problems
 
 ### Counting DNA Nucleotides
+
+### Transcibing DNA into RNA
+
+### Complementing a Strand of DNA
+
+### Rabbits and Recurrence Relations
+
+### Computing GC Content
+
+### Counting Point Mutations
